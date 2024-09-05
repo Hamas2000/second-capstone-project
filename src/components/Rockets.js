@@ -1,27 +1,25 @@
 // src/components/Rockets.js
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchRockets } from '../redux/rockets/rocketsSlice';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { reserveRocket, cancelRocket } from '../redux/rocketsSlice';
 
 const Rockets = () => {
+  const rockets = useSelector((state) => state.rockets);
   const dispatch = useDispatch();
-  const { rockets, loading, error } = useSelector((state) => state.rockets);
-
-  useEffect(() => {
-    dispatch(fetchRockets());
-  }, [dispatch]);
-
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
 
   return (
     <div>
-      <h2>Rockets</h2>
+      <h2>Available Rockets</h2>
       {rockets.map((rocket) => (
         <div key={rocket.id}>
-          <h3>{rocket.name}</h3>
+          <h3>{rocket.rocket_name}</h3>
           <p>{rocket.description}</p>
-          <img src={rocket.images[0]} alt={rocket.name} width="300" />
+          <button
+            onClick={() => rocket.reserved ? dispatch(cancelRocket(rocket.id)) : dispatch(reserveRocket(rocket.id))}
+          >
+            {rocket.reserved ? 'Cancel Reservation' : 'Reserve Rocket'}
+          </button>
+          {rocket.reserved && <span>Reserved</span>}
         </div>
       ))}
     </div>
