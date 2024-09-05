@@ -4,8 +4,8 @@ import './App.css';  // Your custom styles
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';  // Import Navbar component
 import Rockets from './components/Rockets';  // Import Rockets component
-import Missions from './components/Missions';  // Import Missions component
-import MyProfile from './components/MyProfile';  // Import MyProfile component
+import Missions from './components/Missions';  // added new....//
+import MyProfile from './components/MyProfile';  
 
 function App() {
   return (
