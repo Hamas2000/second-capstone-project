@@ -1,32 +1,30 @@
-// src/App.js
-import React, { useEffect } from 'react';
+import React from 'react';
+import logo from './logo.svg';  // You may keep this if you're using the logo elsewhere
+import './App.css';  // Your custom styles
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { fetchRockets } from './redux/rocketsSlice';
-import { fetchMissions } from './redux/missionsSlice';
-import Header from './components/Header';
-import Rockets from './components/Rockets';
-import Missions from './components/Missions';
-import MyProfile from './components/MyProfile';
+import Navbar from './components/Navbar';  // Import Navbar component
+import Rockets from './components/Rockets';  // Import Rockets component
+import Missions from './components/Missions';  // added new....//
+import MyProfile from './components/MyProfile';  
 
-const App = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchRockets());
-    dispatch(fetchMissions());
-  }, [dispatch]);
-
+function App() {
   return (
     <Router>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Rockets />} />
-        <Route path="/missions" element={<Missions />} />
-        <Route path="/profile" element={<MyProfile />} />
-      </Routes>
+      <div className="App">
+        {/* Add Navbar */}
+        <Navbar />
+
+        <header className="App-header">
+          {/* Define Routes */}
+          <Routes>
+            <Route path="/rockets" element={<Rockets />} />
+            <Route path="/missions" element={<Missions />} />
+            <Route path="/profile" element={<MyProfile />} />
+          </Routes>
+        </header>
+      </div>
     </Router>
   );
-};
+}
 
 export default App;
