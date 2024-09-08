@@ -1,16 +1,18 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import RocketsItem from './RocketsItem';
+import RocketsItem from './RocketsItem';  // Assuming you have this component for rockets
 
 const MyProfile = () => {
-  const rockets = useSelector((state) => state.rockets.rockets.filter(rocket => rocket.reserved));
-  const missions = useSelector((state) => state.missions.missions.filter(mission => mission.joined));
+  // Extract and filter data from Redux state
+  const rockets = useSelector((state) => state.rockets.rocketData.filter(rocket => rocket.reserved));
+  const missions = useSelector((state) => state.missions.missions.filter(mission => mission.reserved));
+  const dragons = useSelector((state) => state.dragons.dragons.filter(dragon => dragon.reserved));
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">My Profile</h1>
-      <div>
-        <h2 className="text-xl font-semibold mb-2">Reserved Rockets</h2>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-[100px] p-4">
+      {/* Reserved Rockets Section */}
+      <div className="rocket-card">
+        <h2 className="text-xl font-bold mb-4">My Rockets</h2>
         {rockets.length > 0 ? (
           <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {rockets.map((rocket) => (
@@ -21,19 +23,36 @@ const MyProfile = () => {
           <p>No reserved rockets.</p>
         )}
       </div>
-      <div className="mt-4">
-        <h2 className="text-xl font-semibold mb-2">Joined Missions</h2>
+
+      {/* Joined Missions Section */}
+      <div className="mission-card">
+        <h2 className="text-xl font-bold mb-4">My Missions</h2>
         {missions.length > 0 ? (
-          <ul>
+          <ul className="profile-card border border-gray-800 rounded-lg p-4">
             {missions.map((mission) => (
-              <li key={mission.mission_id} className="border p-4 rounded-lg shadow-lg mb-2">
-                <h3 className="text-lg font-semibold">{mission.mission_name}</h3>
-                <p>{mission.description}</p>
+              <li key={mission.mission_id} className="border-b border-gray-600 py-2">
+                {mission.mission_name}
               </li>
             ))}
           </ul>
         ) : (
-          <p>No joined missions.</p>
+          <p>No reserved missions.</p>
+        )}
+      </div>
+
+      {/* Reserved Dragons Section */}
+      <div className="dragon-card">
+        <h2 className="text-xl font-bold mb-4">My Dragons</h2>
+        {dragons.length > 0 ? (
+          <ul className="profile-card border border-gray-800 rounded-lg p-4">
+            {dragons.map((dragon) => (
+              <li key={dragon.id} className="border-b border-gray-600 py-2">
+                {dragon.name}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>No reserved dragons.</p>
         )}
       </div>
     </div>
