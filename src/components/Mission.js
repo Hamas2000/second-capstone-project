@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { join, leave } from '../redux/missions/missionSlice';
 
-const Mission = ({ mission, description, id, reserved }) => {
+const Mission = ({ id, mission, description, reserved }) => {
   const dispatch = useDispatch();
 
   const handleJoin = () => {
@@ -59,4 +59,5 @@ Mission.propTypes = {
 };
 
 export default Mission;
+
 

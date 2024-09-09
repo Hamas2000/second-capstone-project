@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { nanoid } from '@reduxjs/toolkit';
 import { fetchMissions } from '../redux/missions/missionSlice';
 import Mission from './Mission';
 
@@ -37,7 +36,7 @@ const Missions = () => {
         <tbody>
           {missions.map((mission) => (
             <Mission
-              key={nanoid()} // Ensure unique key for each row
+              key={mission.mission_id} // Use unique mission ID as key
               id={mission.mission_id}
               mission={mission.mission_name}
               description={mission.description}
