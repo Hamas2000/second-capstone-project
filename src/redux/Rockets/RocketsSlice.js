@@ -1,29 +1,40 @@
-import { createSlice } from '@reduxjs/toolkit';
+// src/redux/rockets/RocketsSlice.js
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+
+export const fetchRockets = createAsyncThunk('rockets/fetchRockets', async () => {
+  const response = await fetch('https://api.spacexdata.com/v4/rockets');
+  return response.json();
+});
 
 const rocketsSlice = createSlice({
   name: 'rockets',
   initialState: {
     rockets: [],
-    status: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
+    reservedRockets: [],
+    status: 'idle',
+    error: null,
   },
   reducers: {
-    setRockets: (state, action) => {
-      state.rockets = action.payload;
+    reserveRocket: (state, action) => {
+      state.reservedRockets.push(action.payload);
     },
+    // Other reducers can go here
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchRockets.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(fetchRockets.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.rockets = action.payload;
+      })
+      .addCase(fetchRockets.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+      });
   },
 });
 
-export const { setRockets } = rocketsSlice.actions;
-
-// Async thunk to fetch rockets from an API
-export const fetchRockets = () => async (dispatch) => {
-  try {
-    const response = await fetch('https://api.spacexdata.com/v4/rockets');
-    const data = await response.json();
-    dispatch(setRockets(data));
-  } catch (error) {
-    console.error('Failed to fetch rockets', error);
-  }
-};
-
+export const { reserveRocket } = rocketsSlice.actions;
 export default rocketsSlice.reducer;
