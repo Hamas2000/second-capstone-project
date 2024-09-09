@@ -1,31 +1,53 @@
-// src/redux/rockets/RocketsSlice.js
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-const rocketsSlice = createSlice({
-  name: 'rockets',
-  initialState: {
-    rockets: [],             // This will hold the list of rockets
-    reservedRockets: [],     // This will hold the IDs of reserved rockets
-  },
+const baseUrl = 'https://api.spacexdata.com/v4/rockets';
+export const getDataFromServer = createAsyncThunk('Rockets/getDataFromServer', async () => {
+  try {
+    const response = await fetch(baseUrl);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    return error.message;
+  }
+});
+
+const initialState = {
+  rocketData: [],
+  loading: false,
+  error: '',
+};
+const RocketsSlice = createSlice({
+  name: 'Rockets',
+  initialState,
   reducers: {
-    setRockets: (state, action) => {
-      state.rockets = action.payload; // Set rockets with fetched data
-    },
     reserveRocket: (state, action) => {
-      const rocketId = action.payload; // Get the rocket ID from action payload
-      if (!state.reservedRockets.includes(rocketId)) {
-        state.reservedRockets.push(rocketId); // Add rocket ID to reserved if not already reserved
-      }
+      const rocket = state.rocketData.find((rocket) => rocket.id === action.payload);
+      rocket.reserved = !rocket.reserved;
     },
-    cancelReservation: (state, action) => {
-      const rocketId = action.payload; // Get the rocket ID from action payload
-      state.reservedRockets = state.reservedRockets.filter(id => id !== rocketId); // Remove rocket ID from reserved
-    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(getDataFromServer.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getDataFromServer.fulfilled, (state, action) => {
+        state.loading = false;
+        state.rocketData = action.payload.map((rocket) => (
+          {
+            id: rocket.id,
+            image: rocket.flickr_images[0],
+            name: rocket.name,
+            description: rocket.description,
+          }
+
+        ));
+      })
+      .addCase(getDataFromServer.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      });
   },
 });
 
-// Export actions to be used in components
-export const { setRockets, reserveRocket, cancelReservation } = rocketsSlice.actions;
-
-// Export the reducer to be used in the store
-export default rocketsSlice.reducer;
+export default RocketsSlice.reducer;
+export const { reserveRocket } = RocketsSlice.actions;
