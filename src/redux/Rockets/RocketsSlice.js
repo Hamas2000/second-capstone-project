@@ -1,5 +1,14 @@
-// src/redux/rockets/RocketsSlice.js
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+
+// Define async thunk for fetching data
+export const getDataFromServer = createAsyncThunk(
+  'rockets/getDataFromServer',
+  async () => {
+    // Fetch data from the server (example URL)
+    const response = await fetch('https://api.spacexdata.com/v4/rockets');
+    return response.json();
+  }
+);
 
 const rocketsSlice = createSlice({
   name: 'rockets',
@@ -21,6 +30,11 @@ const rocketsSlice = createSlice({
       const rocketId = action.payload; // Get the rocket ID from action payload
       state.reservedRockets = state.reservedRockets.filter(id => id !== rocketId); // Remove rocket ID from reserved
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(getDataFromServer.fulfilled, (state, action) => {
+      state.rockets = action.payload;
+    });
   },
 });
 
