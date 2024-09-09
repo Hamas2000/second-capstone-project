@@ -1,7 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
+// Async thunk for fetching missions
 export const fetchMissions = createAsyncThunk('missions/fetchMissions', async () => {
   const response = await fetch('https://api.spacexdata.com/v3/missions');
+  if (!response.ok) {
+    throw new Error('Failed to fetch missions');
+  }
   return response.json();
 });
 
@@ -45,3 +49,4 @@ const missionSlice = createSlice({
 export const { join, leave } = missionSlice.actions;
 
 export default missionSlice.reducer;
+

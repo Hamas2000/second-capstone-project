@@ -1,18 +1,16 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { join, leave } from '../redux/missions/missionSlice';
 
-const Mission = (props) => {
-  const {
-    mission, description, id, reserved,
-  } = props;
+const Mission = ({ mission, description, id, reserved }) => {
   const dispatch = useDispatch();
 
-  const missionJoin = (id) => {
+  const handleJoin = () => {
     dispatch(join(id));
   };
 
-  const missionLeave = (id) => {
+  const handleLeave = () => {
     dispatch(leave(id));
   };
 
@@ -33,7 +31,7 @@ const Mission = (props) => {
         {reserved ? (
           <button
             type="button"
-            onClick={() => missionLeave(id)}
+            onClick={handleLeave}
             className="border border-red-500 text-red-500 bg-transparent rounded-md px-2 sm:px-3 py-1 text-xs sm:text-sm hover:bg-red-500 hover:text-white transition"
           >
             Leave Mission
@@ -41,7 +39,7 @@ const Mission = (props) => {
         ) : (
           <button
             type="button"
-            onClick={() => missionJoin(id)}
+            onClick={handleJoin}
             className="border border-black text-black bg-transparent rounded-md px-2 sm:px-3 py-1 text-xs sm:text-sm hover:bg-gray-300 transition"
           >
             Join Mission
@@ -51,7 +49,8 @@ const Mission = (props) => {
     </tr>
   );
 };
-//join mission//
+
+// PropTypes validation
 Mission.propTypes = {
   id: PropTypes.string.isRequired,
   reserved: PropTypes.bool.isRequired,
@@ -60,3 +59,4 @@ Mission.propTypes = {
 };
 
 export default Mission;
+

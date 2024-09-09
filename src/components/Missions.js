@@ -4,7 +4,7 @@ import { nanoid } from '@reduxjs/toolkit';
 import { fetchMissions } from '../redux/missions/missionSlice';
 import Mission from './Mission';
 
-function Missions() {
+const Missions = () => {
   const dispatch = useDispatch();
   const missions = useSelector((state) => state.missions.missions);
   const status = useSelector((state) => state.missions.status);
@@ -19,39 +19,35 @@ function Missions() {
     return <div className="text-center">Loading...</div>;
   }
 
-  if (status === 'succeeded') {
-    return (
-      <div className="overflow-x-auto">
-        <table className="min-w-full border-collapse">
-          <thead className="bg-gray-200">
-            <tr>
-              <th className="border px-2 sm:px-4 py-2 text-xs sm:text-sm text-left">Mission</th>
-              <th className="border px-2 sm:px-4 py-2 text-xs sm:text-sm text-left">Description</th>
-              <th className="border px-2 sm:px-4 py-2 text-xs sm:text-sm text-left">Status</th>
-              <th className="border px-2 sm:px-4 py-2 text-xs sm:text-sm text-left">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {missions.map((mission) => (
-              <Mission
-                key={nanoid()}
-                id={mission.mission_id}
-                mission={mission.mission_name}
-                description={mission.description}
-                reserved={mission.reserved}
-              />
-            ))}
-          </tbody>
-        </table>
-      </div>
-    );
-  }
-
   if (status === 'failed') {
     return <div className="text-center text-red-500">Error loading missions.</div>;
   }
 
-  return null;
-}
+  return (
+    <div className="overflow-x-auto">
+      <table className="min-w-full border-collapse">
+        <thead className="bg-gray-200">
+          <tr>
+            <th className="border px-2 sm:px-4 py-2 text-xs sm:text-sm text-left">Mission</th>
+            <th className="border px-2 sm:px-4 py-2 text-xs sm:text-sm text-left">Description</th>
+            <th className="border px-2 sm:px-4 py-2 text-xs sm:text-sm text-left">Status</th>
+            <th className="border px-2 sm:px-4 py-2 text-xs sm:text-sm text-left">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {missions.map((mission) => (
+            <Mission
+              key={nanoid()} // Ensure unique key for each row
+              id={mission.mission_id}
+              mission={mission.mission_name}
+              description={mission.description}
+              reserved={mission.reserved}
+            />
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
 
 export default Missions;
