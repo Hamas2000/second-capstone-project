@@ -1,4 +1,4 @@
-// src/redux/rockets/RocketsSlice.js
+
 import { createSlice } from '@reduxjs/toolkit';
 
 const rocketsSlice = createSlice({
@@ -24,8 +24,8 @@ const rocketsSlice = createSlice({
   },
 });
 
-// Export actions
+
 export const { setRockets, reserveRocket, cancelReservation } = rocketsSlice.actions;
 
-// Export reducer
+
 export default rocketsSlice.reducer;

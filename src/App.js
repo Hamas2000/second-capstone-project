@@ -1,13 +1,17 @@
-// src/App.js
-import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import React from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+} from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { fetchRockets } from './redux/rocketsSlice';
-import { fetchMissions } from './redux/missionsSlice';
-import Header from './components/Header';
+import { useEffect } from 'react';
 import Rockets from './components/Rockets';
 import Missions from './components/Missions';
 import MyProfile from './components/MyProfile';
+import { getDataFromServer } from './redux/Rockets/RocketsSlice';
+import './index.css';
+import Navbar from './components/Navbar';
 
 function App() {
   const dispatch = useDispatch();
