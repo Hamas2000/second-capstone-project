@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import logo from '../assets/logo-react.png'; // Adjust logo if necessary
+import logo from '../assets/logo-react.png';
 
 const Navbar = () => (
   <header className="bg-white shadow">
@@ -29,3 +29,4 @@ const Navbar = () => (
 );
 
 export default Navbar;
+
