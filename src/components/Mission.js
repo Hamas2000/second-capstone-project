@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 const Mission = ({ mission, onJoin, onLeave }) => {
@@ -29,5 +30,3 @@ const Mission = ({ mission, onJoin, onLeave }) => {
 };
 
 export default Mission;    
-
-

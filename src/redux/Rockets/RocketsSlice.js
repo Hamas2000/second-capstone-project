@@ -1,4 +1,3 @@
-
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const baseUrl = 'https://api.spacexdata.com/v4/rockets';
@@ -45,7 +44,7 @@ const rocketsSlice = createSlice({
           image: rocket.flickr_images[0],
           name: rocket.name,
           description: rocket.description,
-          reserved: false,
+          reserved: false, // Initialize reserved state
         }));
       })
       .addCase(getDataFromServer.rejected, (state, action) => {
@@ -57,6 +56,5 @@ const rocketsSlice = createSlice({
 
 export default rocketsSlice.reducer;
 export const { reserveRocket } = rocketsSlice.actions;
-
 
 

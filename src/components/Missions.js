@@ -1,4 +1,3 @@
-     
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setMissions, joinMission, leaveMission } from '../redux/missions/missionSlice';
@@ -12,6 +11,7 @@ const Missions = () => {
     const fetchMissions = async () => {
       const response = await fetch('https://api.spacexdata.com/v3/missions');
       const data = await response.json();
+      // Add 'joined' property to missions
       const missionsWithJoinStatus = data.map((mission) => ({
         ...mission,
         joined: false,
@@ -48,5 +48,4 @@ const Missions = () => {
 };
 
 export default Missions; 
-
 
