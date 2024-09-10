@@ -12,6 +12,7 @@ const Navbar = () => (
       <nav>
         <ul className="flex space-x-6 list-none">
           {['/', '/missions', '/profile'].map((path) => (
+
             <li key={path} className="relative flex items-center group">
               <NavLink
                 to={path}
