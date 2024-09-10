@@ -28,4 +28,4 @@ const Mission = ({ mission, onJoin, onLeave }) => {
   );
 };
 
-export default Mission;
+export default Mission;    
