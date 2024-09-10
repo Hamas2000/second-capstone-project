@@ -49,7 +49,7 @@ const rocketsSlice = createSlice({
       })
       .addCase(getDataFromServer.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload;
+        state.error = action.error.message; // Properly reference the error message
       });
   },
 });
