@@ -1,31 +1,32 @@
-// src/redux/rockets/RocketsSlice.js
-import { createSlice } from '@reduxjs/toolkit';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import RocketsItem from './RocketsItem';
+import { getDataFromServer } from '../redux/Rockets/RocketsSlice';
 
-const rocketsSlice = createSlice({
-  name: 'rockets',
-  initialState: {
-    rockets: [],
-    reservedRockets: [],
-  },
-  reducers: {
-    setRockets: (state, action) => {
-      state.rockets = action.payload;
-    },
-    reserveRocket: (state, action) => {
-      const rocketId = action.payload;
-      if (!state.reservedRockets.includes(rocketId)) {
-        state.reservedRockets.push(rocketId);
-      }
-    },
-    cancelReservation: (state, action) => {
-      const rocketId = action.payload;
-      state.reservedRockets = state.reservedRockets.filter(id => id !== rocketId);
-    },
-  },
-});
+const Rockets = () => {
+  const dispatch = useDispatch();
+  const { rocketData, loading, error } = useSelector((state) => state.rockets);
 
-// Export actions
-export const { setRockets, reserveRocket, cancelReservation } = rocketsSlice.actions;
+  useEffect(() => {
+    dispatch(getDataFromServer());
+  }, [dispatch]);
 
-// Export reducer
-export default rocketsSlice.reducer;
+  return (
+    <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
+      {loading && <p className="text-center text-lg">Loading...</p>}
+      {error && <p className="text-red-500 text-center">Error: {error}</p>}
+      {!loading && !error && rocketData.map((rocket) => (
+        <RocketsItem
+          key={rocket.id}
+          id={rocket.id}
+          name={rocket.name}
+          image={rocket.image}
+          description={rocket.description}
+          reserved={rocket.reserved}
+        />
+      ))}
+    </ul>
+  );
+};
+
+export default Rockets;

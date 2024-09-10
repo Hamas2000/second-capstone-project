@@ -1,53 +1,31 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
-import { join, leave } from '../redux/missions/missionSlice';
 
-// Component to display and manage mission details
-const Mission = (props) => {
-  const {
-    mission, description, id, reserved,
-  } = props;
-  const dispatch = useDispatch();
-
-  const handleJoin = () => {
-    dispatch(join(id));
-  };
-
-  const handleLeave = () => {
-    dispatch(leave(id));
-  };
+const Mission = ({ mission, onJoin, onLeave }) => {
+  const { mission_id, mission_name, description, joined } = mission;
 
   return (
     <div className="border p-4 rounded-lg shadow-lg">
-      <h2 className="text-xl font-semibold mb-2">{mission}</h2>
+      <h2 className="text-xl font-semibold mb-2">{mission_name}</h2>
       <p className="mb-4">{description}</p>
-      {reserved ? (
+      {joined ? (
         <button
-          onClick={handleLeave}
+          onClick={() => onLeave(mission_id)}
           className="bg-red-500 text-white py-2 px-4 rounded"
         >
           Leave Mission
         </button>
       ) : (
         <button
-          onClick={handleJoin}
+          onClick={() => onJoin(mission_id)}
           className="bg-blue-500 text-white py-2 px-4 rounded"
         >
           Join Mission
         </button>
       )}
+      {joined && <p className="text-green-500">Active Member</p>}
+      {!joined && <p className="text-gray-500">Not a member</p>}
     </div>
   );
 };
 
-// PropTypes for type checking
-Mission.propTypes = {
-  id: PropTypes.string.isRequired,
-  reserved: PropTypes.bool.isRequired,
-  mission: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-};
-
 export default Mission;
-

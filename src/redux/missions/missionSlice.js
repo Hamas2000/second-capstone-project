@@ -1,19 +1,8 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-
-// Async thunk for fetching missions
-export const fetchMissions = createAsyncThunk('missions/fetchMissions', async () => {
-  const response = await fetch('https://api.spacexdata.com/v3/missions');
-  if (!response.ok) {
-    throw new Error('Failed to fetch missions');
-  }
-  return response.json();
-});
+import { createSlice } from '@reduxjs/toolkit';
 
 // Initial state
 const initialState = {
   missions: [],
-  status: 'idle',
-  error: null,
 };
 
 // Slice
@@ -21,36 +10,25 @@ const missionSlice = createSlice({
   name: 'missions',
   initialState,
   reducers: {
-    join: (state, action) => {
-      const mission = state.missions.find((mission) => mission.mission_id === action.payload);
-      if (mission) {
-        mission.reserved = true;
-      }
+    setMissions: (state, action) => {
+      state.missions = action.payload;
     },
-    leave: (state, action) => {
-      const mission = state.missions.find((mission) => mission.mission_id === action.payload);
-      if (mission) {
-        mission.reserved = false;
-      }
+    joinMission: (state, action) => {
+      state.missions = state.missions.map((mission) => 
+        mission.mission_id === action.payload 
+          ? { ...mission, joined: true } 
+          : mission
+      );
     },
-  },
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchMissions.pending, (state) => {
-        state.status = 'loading';
-      })
-      .addCase(fetchMissions.fulfilled, (state, action) => {
-        state.status = 'succeeded';
-        state.missions = action.payload.map((mission) => ({ ...mission, reserved: false }));
-      })
-      .addCase(fetchMissions.rejected, (state, action) => {
-        state.status = 'failed';
-        state.error = action.error.message;
-      });
+    leaveMission: (state, action) => {
+      state.missions = state.missions.map((mission) => 
+        mission.mission_id === action.payload 
+          ? { ...mission, joined: false } 
+          : mission
+      );
+    },
   },
 });
 
-export const { join, leave } = missionSlice.actions;
-
+export const { setMissions, joinMission, leaveMission } = missionSlice.actions;
 export default missionSlice.reducer;
-
