@@ -6,17 +6,10 @@ const MyProfile = () => {
   const filterRockets = rocketData.filter((rocket) => rocket.reserved);
   const missionData = useSelector((state) => state.missions.missions);
   const filterMissions = missionData.filter((mission) => mission.reserved);
-<<<<<<< HEAD
-  const dragonData = useSelector((state) => state.dragons.dragons);
-  const filterDragons = dragonData.filter((dragon) => dragon.reserved);
-
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-[100px]">
-=======
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-[100px]">
->>>>>>> a0219063efbb94b00e1a99faff8aeaa1256ecc8c
+
       <div className="mission-card">
         <h2 className="text-xl font-bold mb-4">My Missions</h2>
         <ul className="profile-card border border-gray-800 rounded-lg p-4">
@@ -41,22 +34,6 @@ const MyProfile = () => {
           )}
         </ul>
       </div>
-<<<<<<< HEAD
-      <div className="dragon-card">
-        <h2 className="text-xl font-bold mb-4">My Dragons</h2>
-        <ul className="profile-card border border-gray-800 rounded-lg p-4">
-          {filterDragons.length > 0 ? (
-            filterDragons.map((dragon) => (
-              <li key={dragon.id} className="border-b border-gray-600 py-2">{dragon.name}</li>
-            ))
-          ) : (
-            <li>No reserved dragons</li>
-          )}
-        </ul>
-      </div>
-      .
-=======
->>>>>>> a0219063efbb94b00e1a99faff8aeaa1256ecc8c
     </div>
   );
 };
