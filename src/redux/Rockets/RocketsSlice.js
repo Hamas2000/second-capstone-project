@@ -51,3 +51,7 @@ const RocketsSlice = createSlice({
 
 export default RocketsSlice.reducer;
 export const { reserveRocket } = RocketsSlice.actions;
+<<<<<<< HEAD
+=======
+
+>>>>>>> a0219063efbb94b00e1a99faff8aeaa1256ecc8c

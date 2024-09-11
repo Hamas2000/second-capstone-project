@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 import { NavLink } from 'react-router-dom';
 import logo from '../assets/logo.png';
+=======
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import logo from '../assets/logo-react.png';
+>>>>>>> a0219063efbb94b00e1a99faff8aeaa1256ecc8c
 
 const Navbar = () => (
   <header className="bg-white shadow">
@@ -10,7 +16,11 @@ const Navbar = () => (
       </div>
       <nav>
         <ul className="flex space-x-6 list-none">
+<<<<<<< HEAD
           {['/', '/missions', '/myprofile', '/dragons'].map((path) => (
+=======
+          {['/', '/missions', '/profile'].map((path) => (
+>>>>>>> a0219063efbb94b00e1a99faff8aeaa1256ecc8c
             <li key={path} className="relative flex items-center group">
               <NavLink
                 to={path}
@@ -26,6 +36,11 @@ const Navbar = () => (
     </div>
   </header>
 );
+<<<<<<< HEAD
 
 export default Navbar;
 
+=======
+
+export default Navbar;
+>>>>>>> a0219063efbb94b00e1a99faff8aeaa1256ecc8c
