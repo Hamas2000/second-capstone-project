@@ -1,4 +1,4 @@
-                                                                                                                          import React, { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setMissions, joinMission, leaveMission } from '../redux/missions/missionSlice';
 import Mission from './Mission';
@@ -26,11 +26,10 @@ const Missions = () => {
   };
 
   return (
-
     <div className="p-8">
       <h1 className="text-3xl font-bold mb-6" id="mission">Missions</h1>
-      <table className="min-w-full bg-white border border-gray-300 rounded-md shadow" class="table">
-        <thead className="bg-gray-100 border-b border-black-500">
+      <table className="min-w-full bg-white border border-gray-300 rounded-md shadow">
+        <thead className="bg-gray-100 border-b border-gray-300">
           <tr>
             <th className="py-4 px-6 text-left font-bold text-gray-800 border-r border-gray-300">Mission</th>
             <th className="py-4 px-6 text-left font-bold text-gray-800 border-r border-gray-300">Description</th>
@@ -51,6 +50,5 @@ const Missions = () => {
     </div>
   );
 };
-
 
 export default Missions;
