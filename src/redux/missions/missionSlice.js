@@ -1,11 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-// Initial state
 const initialState = {
   missions: [],
 };
 
-// Slice
 const missionSlice = createSlice({
   name: 'missions',
   initialState,
