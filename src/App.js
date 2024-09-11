@@ -5,6 +5,7 @@ import Rockets from './components/Rockets';
 import Missions from './components/Missions';
 import MyProfile from './components/MyProfile';
 import './App.css';
+import './components/style.css';
 
 function App() {
   return (
@@ -25,4 +26,3 @@ function App() {
 }
 
 export default App;
-
