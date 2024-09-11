@@ -1,11 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-// Initial state
 const initialState = {
   missions: [],
 };
 
-// Slice
 const missionSlice = createSlice({
   name: 'missions',
   initialState,
@@ -14,16 +12,18 @@ const missionSlice = createSlice({
       state.missions = action.payload;
     },
     joinMission: (state, action) => {
-      state.missions = state.missions.map((mission) => 
-        mission.mission_id === action.payload 
-          ? { ...mission, joined: true } 
+      const missionId = action.payload;
+      state.missions = state.missions.map((mission) =>
+        mission.mission_id === missionId
+          ? { ...mission, reserved: true }
           : mission
       );
     },
     leaveMission: (state, action) => {
-      state.missions = state.missions.map((mission) => 
-        mission.mission_id === action.payload 
-          ? { ...mission, joined: false } 
+      const missionId = action.payload;
+      state.missions = state.missions.map((mission) =>
+        mission.mission_id === missionId
+          ? { ...mission, reserved: false }
           : mission
       );
     },
@@ -32,5 +32,3 @@ const missionSlice = createSlice({
 
 export const { setMissions, joinMission, leaveMission } = missionSlice.actions;
 export default missionSlice.reducer;
-
-

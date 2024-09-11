@@ -11,12 +11,7 @@ const Missions = () => {
     const fetchMissions = async () => {
       const response = await fetch('https://api.spacexdata.com/v3/missions');
       const data = await response.json();
-      // Add 'joined' property to missions
-      const missionsWithJoinStatus = data.map((mission) => ({
-        ...mission,
-        joined: false,
-      }));
-      dispatch(setMissions(missionsWithJoinStatus));
+      dispatch(setMissions(data.map((mission) => ({ ...mission, reserved: false }))));
     };
 
     fetchMissions();
@@ -31,21 +26,29 @@ const Missions = () => {
   };
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Missions</h1>
-      <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        {missions.map((mission) => (
-          <Mission
-            key={mission.mission_id}
-            mission={mission}
-            onJoin={handleJoin}
-            onLeave={handleLeave}
-          />
-        ))}
-      </div>
+    <div className="p-8">
+      <h1 className="text-3xl font-bold mb-6" id="mission">Missions</h1>
+      <table className="min-w-full bg-white border border-gray-300 rounded-md shadow" class="table">
+        <thead className="bg-gray-100 border-b border-black-500">
+          <tr>
+            <th className="py-4 px-6 text-left font-bold text-gray-800 border-r border-gray-300">Mission</th>
+            <th className="py-4 px-6 text-left font-bold text-gray-800 border-r border-gray-300">Description</th>
+            <th className="py-4 px-6 text-left font-bold text-gray-800">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {missions.map((mission) => (
+            <Mission
+              key={mission.mission_id}
+              mission={mission}
+              onJoin={() => handleJoin(mission.mission_id)}
+              onLeave={() => handleLeave(mission.mission_id)}
+            />
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
 
-export default Missions; 
-
+export default Missions;
