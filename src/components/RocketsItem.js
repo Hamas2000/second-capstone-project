@@ -1,30 +1,49 @@
-import React from 'react';
+import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { reserveRocket } from '../redux/Rockets/RocketsSlice';
 
-const RocketsItem = ({ rocket, onReserve, onCancel }) => {
-  const { id, rocket_name, description, flickr_images, reserved } = rocket;
+const RocketsItem = ({
+  id, name, image, description, reserved,
+}) => {
+  const dispatch = useDispatch();
+  const reserveRockets = (buttonId) => {
+    dispatch(reserveRocket(buttonId));
+  };
 
   return (
-    <div className="border p-4 rounded-lg shadow-lg">
-      <img src={flickr_images[0]} alt={rocket_name} className="w-full h-48 object-cover rounded-t-lg mb-4" />
-      <h2 className="text-xl font-semibold mb-2">{rocket_name}</h2>
-      <p className="mb-4">{description}</p>
-      {reserved ? (
+    <li className="flex bg-white shadow-lg rounded-lg p-4 items-center">
+      <div className="w-2/5 flex-shrink-0">
+        <img
+          className="w-full h-auto rounded-lg object-cover"
+          alt={name}
+          src={image}
+        />
+      </div>
+      <div className="flex-1 ml-6">
+        <h2 className="text-xl font-semibold mb-2">{name}</h2>
+        <p className="text-gray-700 mb-4">
+          {reserved && <span className="text-green-500 font-semibold">Reserved</span>}
+          <span className="ml-2">{description}</span>
+        </p>
         <button
-          onClick={onCancel}
-          className="bg-red-500 text-white py-2 px-4 rounded"
+          onClick={() => reserveRockets(id)}
+          className={`px-5 py-2 rounded-lg text-white ${reserved ? 'bg-red-500 hover:bg-red-600' : 'bg-blue-500 hover:bg-blue-600'}`}
+          type="button"
         >
-          Cancel Reservation
+          {reserved ? 'Cancel Reservation' : 'Reserve Rocket'}
         </button>
-      ) : (
-        <button
-          onClick={onReserve}
-          className="bg-blue-500 text-white py-2 px-4 rounded"
-        >
-          Reserve Rocket
-        </button>
-      )}
-    </div>
+      </div>
+    </li>
   );
 };
 
+RocketsItem.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  reserved: PropTypes.bool.isRequired,
+};
+
 export default RocketsItem;
+

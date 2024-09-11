@@ -1,45 +1,31 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { setMissions, joinMission, leaveMission } from '../redux/missions/missionSlice';
-import Mission from './Mission';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import logo from '../assets/logo-react.png';
 
-const Missions = () => {
-  const dispatch = useDispatch();
-  const missions = useSelector((state) => state.missions.missions);
-
-  useEffect(() => {
-    const fetchMissions = async () => {
-      const response = await fetch('https://api.spacexdata.com/v3/missions');
-      const data = await response.json();
-      dispatch(setMissions(data));
-    };
-
-    fetchMissions();
-  }, [dispatch]);
-
-  const handleJoin = (id) => {
-    dispatch(joinMission(id));
-  };
-
-  const handleLeave = (id) => {
-    dispatch(leaveMission(id));
-  };
-
-  return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Missions</h1>
-      <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        {missions.map((mission) => (
-          <Mission
-            key={mission.mission_id}
-            mission={mission}
-            onJoin={() => handleJoin(mission.mission_id)}
-            onLeave={() => handleLeave(mission.mission_id)}
-          />
-        ))}
+const Navbar = () => (
+  <header className="bg-white shadow">
+    <div className="container mx-auto px-4 flex justify-between items-center">
+      <div className="flex items-center">
+        <img src={logo} className="h-10 w-10" alt="Space Travelers Hub logo" />
+        <h1 className="text-xl font-bold ml-2">Space Travelers Hub</h1>
       </div>
+      <nav>
+        <ul className="flex space-x-6 list-none">
+          {['/', '/missions', '/profile'].map((path) => (
+            <li key={path} className="relative flex items-center group">
+              <NavLink
+                to={path}
+                className={({ isActive }) => `inline-block ${isActive ? 'font-semibold' : ''} text-blue-600 hover:text-blue-800 hover:underline`}
+              >
+                {path === '/' ? 'Rockets' : path.charAt(1).toUpperCase() + path.slice(2)}
+              </NavLink>
+              <span className="ml-2 h-6 border-l-2 border-transparent transition-all duration-300 group-hover:border-blue-600" />
+            </li>
+          ))}
+        </ul>
+      </nav>
     </div>
-  );
-};
+  </header>
+);
 
-export default Missions;
+export default Navbar;

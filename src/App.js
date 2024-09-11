@@ -1,25 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';  // You may keep this if you're using the logo elsewhere
-import './App.css';  // Your custom styles
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';  // Import Navbar component
 import Rockets from './components/Rockets';  // Import Rockets component
-import Missions from './components/Missions';  // added new....//
-import MyProfile from './components/MyProfile';  
+import Missions from './components/Missions';  // Import Missions component
+import MyProfile from './components/MyProfile';  // Import MyProfile component
+import './App.css';  // Import your custom styles
 
 function App() {
   return (
     <Router>
       <div className="App">
-        {/* Add Navbar */}
-        <Navbar />
-
+        <Navbar /> {/* Display Navbar on all pages */}
         <header className="App-header">
-          {/* Define Routes */}
-          <Routes>
-            <Route path="/rockets" element={<Rockets />} />
-            <Route path="/missions" element={<Missions />} />
-            <Route path="/profile" element={<MyProfile />} />
+          <Routes> {/* Define your routes here */}
+            <Route path="/" element={<Rockets />} /> {/* Root path route */}
+            <Route path="/missions" element={<Missions />} /> {/* Missions path */}
+            <Route path="/profile" element={<MyProfile />} /> {/* Profile path */}
           </Routes>
         </header>
       </div>
@@ -28,3 +24,5 @@ function App() {
 }
 
 export default App;
+
+
