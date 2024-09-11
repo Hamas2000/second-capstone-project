@@ -11,7 +11,12 @@ const Missions = () => {
     const fetchMissions = async () => {
       const response = await fetch('https://api.spacexdata.com/v3/missions');
       const data = await response.json();
-      dispatch(setMissions(data));
+      // Add 'joined' property to missions
+      const missionsWithJoinStatus = data.map((mission) => ({
+        ...mission,
+        joined: false,
+      }));
+      dispatch(setMissions(missionsWithJoinStatus));
     };
 
     fetchMissions();
@@ -33,8 +38,8 @@ const Missions = () => {
           <Mission
             key={mission.mission_id}
             mission={mission}
-            onJoin={() => handleJoin(mission.mission_id)}
-            onLeave={() => handleLeave(mission.mission_id)}
+            onJoin={handleJoin}
+            onLeave={handleLeave}
           />
         ))}
       </div>

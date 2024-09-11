@@ -15,14 +15,14 @@ const missionSlice = createSlice({
     },
     joinMission: (state, action) => {
       state.missions = state.missions.map((mission) => 
-        mission.id === action.payload 
+        mission.mission_id === action.payload 
           ? { ...mission, joined: true } 
           : mission
       );
     },
     leaveMission: (state, action) => {
       state.missions = state.missions.map((mission) => 
-        mission.id === action.payload 
+        mission.mission_id === action.payload 
           ? { ...mission, joined: false } 
           : mission
       );
