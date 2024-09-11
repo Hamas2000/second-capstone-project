@@ -28,11 +28,19 @@ const Missions = () => {
   return (
     <div className="p-8">
       <h1 className="text-3xl font-bold mb-6" id="mission">Missions</h1>
+<<<<<<< traveler
       <table className="min-w-full bg-white border border-gray-300 rounded-md shadow" class="table">
         <thead className="bg-gray-100 border-b border-black-500">
           <tr>
             <th className="py-4 px-6 text-left font-bold text-gray-800 border-r border-gray-300">Mission</th>
             <th className="py-4 px-6 text-left font-bold text-gray-800 border-r border-gray-300">Description</th>
+=======
+      <table className="min-w-full bg-white border border-gray-300 rounded-md shadow" >
+        <thead className="bg-gray-100 border-b border-gray-300">
+          <tr>
+            <th className="py-4 px-6 text-left font-bold text-gray-800 border-r border-gray-300">Mission</th>
+            <th className="py-4 px-6 text-left font-bold text-gray-800 border-r border-gray-300" class="mission-description">Description</th>
+>>>>>>> developments
             <th className="py-4 px-6 text-left font-bold text-gray-800">Status</th>
           </tr>
         </thead>
