@@ -1,33 +1,30 @@
-// src/App.js
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import Navbar from './components/Navbar';
 import Rockets from './components/Rockets';
 import Missions from './components/Missions';
 import MyProfile from './components/MyProfile';
-import { fetchRockets } from './redux/rockets/RocketsSlice';
-import Navbar from './components/Navbar';
-import './index.css';
+import './App.css';
 
 function App() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchRockets());
-  }, [dispatch]);
-
   return (
-    <div className="App">
-      <Router>
+    <Router>
+      <div className="App">
         <Navbar />
-        <Routes>
-          <Route path="/" element={<Rockets />} />
-          <Route path="/missions" element={<Missions />} />
-          <Route path="/myprofile" element={<MyProfile />} />
-        </Routes>
-      </Router>
-    </div>
+        <header className="App-header">
+          <Routes>
+            <Route path="/rockets" element={<Rockets />} />
+            <Route path="/missions" element={<Missions />} />
+            <Route path="/profile" element={<MyProfile />} />
+            <Route path="/" element={<Rockets />} /> {}
+          </Routes>
+        </header>
+      </div>
+    </Router>
   );
 }
 
 export default App;
+
+
+

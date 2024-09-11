@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-// Async thunk for fetching missions
 export const fetchMissions = createAsyncThunk('missions/fetchMissions', async () => {
   const response = await fetch('https://api.spacexdata.com/v3/missions');
   if (!response.ok) {
@@ -23,11 +22,19 @@ const missionSlice = createSlice({
         mission.reserved = true;
       }
     },
-    leave: (state, action) => {
-      const mission = state.missions.find((mission) => mission.mission_id === action.payload);
-      if (mission) {
-        mission.reserved = false;
-      }
+    joinMission: (state, action) => {
+      state.missions = state.missions.map((mission) => 
+        mission.mission_id === action.payload 
+          ? { ...mission, joined: true } 
+          : mission
+      );
+    },
+    leaveMission: (state, action) => {
+      state.missions = state.missions.map((mission) => 
+        mission.mission_id === action.payload 
+          ? { ...mission, joined: false } 
+          : mission
+      );
     },
   },
   extraReducers: (builder) => {
@@ -46,7 +53,5 @@ const missionSlice = createSlice({
   },
 });
 
-export const { join, leave } = missionSlice.actions;
-
+export const { setMissions, joinMission, leaveMission } = missionSlice.actions;
 export default missionSlice.reducer;
-

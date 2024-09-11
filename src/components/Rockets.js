@@ -1,53 +1,33 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchRockets } from '../redux/rockets/RocketsSlice'; // Ensure the path is correct
-import Rocket from './Rocket'; // Component to render individual rockets
+
+import { useSelector, useDispatch } from 'react-redux';
+import RocketsItem from './RocketsItem';
+import { getDataFromServer } from '../redux/Rockets/RocketsSlice';
 
 const Rockets = () => {
   const dispatch = useDispatch();
-  const rockets = useSelector((state) => state.rockets.rockets); // Get rockets from Redux store
-  const reservedRockets = useSelector((state) => state.rockets.reservedRockets); // Get reserved rockets
-  const status = useSelector((state) => state.rockets.status); // Get loading status
-  const error = useSelector((state) => state.rockets.error); // Get error message
+  const { rocketData, loading, error } = useSelector((state) => state.rockets);
 
   useEffect(() => {
-    if (status === 'idle') {
-      dispatch(fetchRockets()); // Dispatch action to fetch rockets
-    }
-  }, [dispatch, status]);
-
-  if (status === 'loading') {
-    return <div>Loading...</div>; // Show loading indicator
-  }
-
-  if (status === 'failed') {
-    return <div>Error: {error}</div>; // Show error message
-  }
+    dispatch(getDataFromServer());
+  }, [dispatch]);
 
   return (
-    <div className="overflow-x-auto">
-      <table className="min-w-full border-collapse">
-        <thead className="bg-gray-200">
-          <tr>
-            <th className="border px-2 sm:px-4 py-2 text-xs sm:text-sm text-left">Rocket</th>
-            <th className="border px-2 sm:px-4 py-2 text-xs sm:text-sm text-left">Description</th>
-            <th className="border px-2 sm:px-4 py-2 text-xs sm:text-sm text-left">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rockets.map((rocket) => (
-            <Rocket
-              key={rocket.id}
-              id={rocket.id}
-              name={rocket.name}
-              description={rocket.description}
-              reserved={reservedRockets.includes(rocket.id)} // Check if the rocket is reserved
-            />
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
+      {loading && <p className="text-center text-lg">Loading...</p>}
+      {error && <p className="text-red-500 text-center">Error: {error}</p>}
+      {!loading && !error && rocketData.map((rocket) => (
+        <RocketsItem
+          key={rocket.id}
+          id={rocket.id}
+          name={rocket.name}
+          image={rocket.image}
+          description={rocket.description}
+          reserved={rocket.reserved}
+        />
+      ))}
+    </ul>
   );
 };
 
-export default Rockets; // Export the component
+export default Rockets;

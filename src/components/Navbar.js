@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import logo from '../assets/logo.png';
+
+import logo from '../assets/logo-react.png';
 
 const Navbar = () => (
   <header className="bg-white shadow">
@@ -11,7 +12,9 @@ const Navbar = () => (
       </div>
       <nav>
         <ul className="flex space-x-6 list-none">
-          {['/', '/missions', '/myprofile', '/dragons'].map((path) => (
+
+          {['/', '/missions', '/profile'].map((path) => (
+
             <li key={path} className="relative flex items-center group">
               <NavLink
                 to={path}
@@ -29,4 +32,3 @@ const Navbar = () => (
 );
 
 export default Navbar;
-

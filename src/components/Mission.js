@@ -1,63 +1,32 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
-import { join, leave } from '../redux/missions/missionSlice';
 
-const Mission = ({ id, mission, description, reserved }) => {
-  const dispatch = useDispatch();
-
-  const handleJoin = () => {
-    dispatch(join(id));
-  };
-
-  const handleLeave = () => {
-    dispatch(leave(id));
-  };
+const Mission = ({ mission, onJoin, onLeave }) => {
+  const { mission_id, mission_name, description, joined } = mission;
 
   return (
-    <tr className="hover:bg-gray-100 transition">
-      <td className="px-2 sm:px-4 py-2 text-sm sm:text-base">{mission}</td>
-      <td className="px-2 sm:px-4 py-2 text-sm sm:text-base">{description}</td>
-      <td className="px-2 sm:px-4 py-2">
-        <span
-          className={`inline-block text-white text-xs sm:text-sm rounded-md px-2 py-1 ${
-            reserved ? 'bg-teal-600' : 'bg-gray-600'
-          }`}
+    <div className="border p-4 rounded-lg shadow-lg">
+      <h2 className="text-xl font-semibold mb-2">{mission_name}</h2>
+      <p className="mb-4">{description}</p>
+      {joined ? (
+        <button
+          onClick={() => onLeave(mission_id)}
+          className="bg-red-500 text-white py-2 px-4 rounded"
         >
-          {reserved ? 'Active Member' : 'Not a Member'}
-        </span>
-      </td>
-      <td className="px-2 sm:px-4 py-2">
-        {reserved ? (
-          <button
-            type="button"
-            onClick={handleLeave}
-            className="border border-red-500 text-red-500 bg-transparent rounded-md px-2 sm:px-3 py-1 text-xs sm:text-sm hover:bg-red-500 hover:text-white transition"
-          >
-            Leave Mission
-          </button>
-        ) : (
-          <button
-            type="button"
-            onClick={handleJoin}
-            className="border border-black text-black bg-transparent rounded-md px-2 sm:px-3 py-1 text-xs sm:text-sm hover:bg-gray-300 transition"
-          >
-            Join Mission
-          </button>
-        )}
-      </td>
-    </tr>
+          Leave Mission
+        </button>
+      ) : (
+        <button
+          onClick={() => onJoin(mission_id)}
+          className="bg-blue-500 text-white py-2 px-4 rounded"
+        >
+          Join Mission
+        </button>
+      )}
+      {joined && <p className="text-green-500">Active Member</p>}
+      {!joined && <p className="text-gray-500">Not a member</p>}
+    </div>
   );
 };
 
-// PropTypes validation
-Mission.propTypes = {
-  id: PropTypes.string.isRequired,
-  reserved: PropTypes.bool.isRequired,
-  mission: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-};
-
 export default Mission;
-
 
