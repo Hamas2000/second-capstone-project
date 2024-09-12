@@ -1,61 +1,52 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
-import { join, leave } from '../redux/missions/missionSlice';
+import React, { useState } from 'react';
 
-const Mission = ({ id, mission, description, reserved }) => {
-  const dispatch = useDispatch();
+const Mission = ({ mission, onJoin, onLeave }) => {
+  const [isActive, setIsActive] = useState(mission.reserved);
 
-  const handleJoin = () => {
-    dispatch(join(id));
+  const handleJoinClick = () => {
+    onJoin();
+    setIsActive(true);
   };
 
-  const handleLeave = () => {
-    dispatch(leave(id));
+  const handleLeaveClick = () => {
+    onLeave();
+    setIsActive(false);
   };
 
   return (
-    <tr className="hover:bg-gray-100 transition">
-      <td className="px-2 sm:px-4 py-2 text-sm sm:text-base">{mission}</td>
-      <td className="px-2 sm:px-4 py-2 text-sm sm:text-base">{description}</td>
-      <td className="px-2 sm:px-4 py-2">
-        <span
-          className={`inline-block text-white text-xs sm:text-sm rounded-md px-2 py-1 ${
-            reserved ? 'bg-teal-600' : 'bg-gray-600'
-          }`}
-        >
-          {reserved ? 'Active Member' : 'Not a Member'}
-        </span>
-      </td>
-      <td className="px-2 sm:px-4 py-2">
-        {reserved ? (
-          <button
-            type="button"
-            onClick={handleLeave}
-            className="border border-red-500 text-red-500 bg-transparent rounded-md px-2 sm:px-3 py-1 text-xs sm:text-sm hover:bg-red-500 hover:text-white transition"
-          >
-            Leave Mission
-          </button>
+    <tr className="border-b border-gray-300">
+      {}
+      <td className="py-4 px-6 font-bold text-gray-800 border-r border-gray-300">{mission.mission_name}</td>
+
+      {}
+      <td className="py-4 px-6 text-gray-700 border-r border-gray-300">{mission.description}</td>
+
+      {}
+      <td className="py-4 px-6 whitespace-nowrap">
+        {isActive ? (
+          <div className="flex items-center space-x-2">
+            <span className="text-green-700 font-semibold">Active Member</span>
+            <button
+              onClick={handleLeaveClick}
+              className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition"
+            >
+              Leave Mission
+            </button>
+          </div>
         ) : (
-          <button
-            type="button"
-            onClick={handleJoin}
-            className="border border-black text-black bg-transparent rounded-md px-2 sm:px-3 py-1 text-xs sm:text-sm hover:bg-gray-300 transition"
-          >
-            Join Mission
-          </button>
+          <div className="flex items-center space-x-2">
+            <span className="text-gray-500 font-semibold">Not a Member</span>
+            <button
+              onClick={handleJoinClick}
+              className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition"
+            >
+              Join Mission
+            </button>
+          </div>
         )}
       </td>
     </tr>
   );
-};
-
-// PropTypes validation
-Mission.propTypes = {
-  id: PropTypes.string.isRequired,
-  reserved: PropTypes.bool.isRequired,
-  mission: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
 };
 
 export default Mission;
