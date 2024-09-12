@@ -56,7 +56,7 @@
     text-align: center; 
   }
 
-.mission-card,
+  .mission-card,
 .rocket-card {
   background-color: rgb(229, 231, 235);
   color: black;
@@ -70,11 +70,3 @@
   border-radius: 0.5rem;
   padding: 1rem;
 }
-
-.member {
-  font-size: 1rem;
-  color: rgba(185, 17, 5, 0.973);
-  padding: o.5rem;
-  text-align: center; 
-}
-  

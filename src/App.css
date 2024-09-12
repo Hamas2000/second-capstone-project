@@ -7,7 +7,7 @@
 }
 
 .App-logo {
-  height: 100vmin;
+  height: 100vmin; /* Increased height for the logo */
   pointer-events: none;
 }
 
@@ -17,7 +17,7 @@
   }
 }
 
-.App-header {
+ .App-header {
   background-color: #fff;
   min-height: 300px; 
   display: flex;
@@ -30,11 +30,11 @@
 } 
 
 .App-link {
-  color: black;
+  color: black; /* Set link color to black */
 }
 
 .App-link:hover {
-  color: rgba(255, 140, 0, 1);
+  color: rgba(255, 140, 0, 1); /* Set hover color to dark orange */
 }
 
 @keyframes App-logo-spin {

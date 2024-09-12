@@ -17,7 +17,7 @@ function App() {
             <Route path="/rockets" element={<Rockets />} />
             <Route path="/missions" element={<Missions />} />
             <Route path="/profile" element={<MyProfile />} />
-            <Route path="/" element={<Rockets />} /> {}
+            <Route path="/" element={<Rockets />} /> {/* Set default route */}
           </Routes>
         </header>
       </div>
