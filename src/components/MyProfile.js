@@ -5,11 +5,14 @@ const MyProfile = () => {
   const { rocketData } = useSelector((state) => state.rockets);
   const filterRockets = rocketData.filter((rocket) => rocket.reserved);
   const missionData = useSelector((state) => state.missions.missions);
+
+  // Filter missions that are reserved (joined)
   const filterMissions = missionData.filter((mission) => mission.reserved);
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-[100px]">
-      <div className="mission-card">
+      {/* My Missions Section */}
+      <div className="mission-card bg-[rgb(229_231_235_/_var(--tw-bg-opacity))] text-black p-5 border border-gray-800">
         <h2 className="text-xl font-bold mb-4">My Missions</h2>
         <ul className="profile-card border border-gray-800 rounded-lg p-4">
           {filterMissions.length > 0 ? (
@@ -21,7 +24,9 @@ const MyProfile = () => {
           )}
         </ul>
       </div>
-      <div className="rocket-card">
+
+      {/* My Rockets Section */}
+      <div className="rocket-card bg-[rgb(229_231_235_/_var(--tw-bg-opacity))] text-black p-5 border border-gray-800">
         <h2 className="text-xl font-bold mb-4">My Rockets</h2>
         <ul className="profile-card border border-gray-800 rounded-lg p-4">
           {filterRockets.length > 0 ? (
@@ -37,5 +42,5 @@ const MyProfile = () => {
   );
 };
 
-export default MyProfile;   
+export default MyProfile;
 
