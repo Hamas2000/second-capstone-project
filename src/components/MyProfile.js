@@ -44,8 +44,4 @@ const MyProfile = () => {
   );
 };
 
-<<<<<<< HEAD
 export default MyProfile;
-=======
-export default MyProfile;
->>>>>>> mission

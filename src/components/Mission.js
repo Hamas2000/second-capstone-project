@@ -51,7 +51,3 @@ const Mission = ({ mission, onJoin, onLeave }) => {
 };
 
 export default Mission;
-<<<<<<< HEAD
-=======
-
->>>>>>> mission

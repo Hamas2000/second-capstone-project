@@ -31,8 +31,4 @@ const missionSlice = createSlice({
 });
 
 export const { setMissions, joinMission, leaveMission } = missionSlice.actions;
-<<<<<<< HEAD
 export default missionSlice.reducer;
-=======
-export default missionSlice.reducer;
->>>>>>> mission
