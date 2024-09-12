@@ -1,4 +1,4 @@
-                                                                                                                          import React, { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setMissions, joinMission, leaveMission } from '../redux/missions/missionSlice';
 import Mission from './Mission';
@@ -26,46 +26,29 @@ const Missions = () => {
   };
 
   return (
-<<<<<<<<< Temporary merge branch 1
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Missions</h1>
-      <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        {missions.map((mission) => (
-          <Mission
-            key={mission.mission_id}
-            mission={mission}
-            onJoin={handleJoin}
-            onLeave={handleLeave}
-          />
-        ))}
-      </div>
-=========
-    <div className="overflow-x-auto">
-      <table className="min-w-full border-collapse">
-        <thead className="bg-gray-200">
+    <div className="p-8">
+      <h1 className="text-3xl font-bold mb-6" id="mission">Missions</h1>
+      <table className="min-w-full bg-white border border-gray-300 rounded-md shadow" class="table">
+        <thead className="bg-gray-100 border-b border-black-500">
           <tr>
-            <th className="border px-2 sm:px-4 py-2 text-xs sm:text-sm text-left">Mission</th>
-            <th className="border px-2 sm:px-4 py-2 text-xs sm:text-sm text-left">Description</th>
-            <th className="border px-2 sm:px-4 py-2 text-xs sm:text-sm text-left">Status</th>
-            <th className="border px-2 sm:px-4 py-2 text-xs sm:text-sm text-left">Actions</th>
+            <th className="py-4 px-6 text-left font-bold text-gray-800 border-r border-gray-300">Mission</th>
+            <th className="py-4 px-6 text-left font-bold text-gray-800 border-r border-gray-300">Description</th>
+            <th className="py-4 px-6 text-left font-bold text-gray-800">Status</th>
           </tr>
         </thead>
         <tbody>
           {missions.map((mission) => (
             <Mission
-              key={mission.mission_id} // Use unique mission ID as key
-              id={mission.mission_id}
-              mission={mission.mission_name}
-              description={mission.description}
-              reserved={mission.reserved}
+              key={mission.mission_id}
+              mission={mission}
+              onJoin={() => handleJoin(mission.mission_id)}
+              onLeave={() => handleLeave(mission.mission_id)}
             />
           ))}
         </tbody>
       </table>
->>>>>>>>> Temporary merge branch 2
     </div>
   );
 };
 
 export default Missions;
->>>>>>>>> Temporary merge branch 2

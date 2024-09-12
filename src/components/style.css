@@ -1,51 +1,50 @@
-gg.table {
-  border: solid 3px grey;
-}
-
-.join {
-    padding: 0.375rem 0.75rem; /* Smaller padding: 6px 12px */
-    font-size: 0.875rem; /* Smaller font size: 14px */
-    background-color: transparent; /* Transparent background */
-    color: #4dbfbb; /* Button text color */
-    border: 2px solid #4dbfbb; /* Border color */
-    border-radius: 0.375rem; /* Medium rounded corners */
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Smaller shadow */
-    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
+.table {
+    border: solid 3px grey;
   }
   
-  .join:hover {
-    background-color: #4dbfbb; /* Background color on hover */
-    color: #ffffff; /* Text color on hover */
-  }
+  .join {
+      padding: 0.375rem 0.75rem;
+      font-size: 0.875rem;
+      background-color: transparent;
+      color: #4dbfbb;
+      border: 2px solid #4dbfbb;
+      border-radius: 0.375rem;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    
+    .join:hover {
+      background-color: #4dbfbb;
+      color: #ffffff;
+    }
+    
+    .leave {
+      padding: 0.375rem 0.75rem;
+      font-size: 0.875rem;
+      background-color: transparent;
+      color: #ef4444;
+      border: 2px solid #ef4444;
+      border-radius: 0.375rem;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    
+    .leave:hover {
+      background-color: #ef4444;
+      color: #ffffff;
+    }
+    
+    .active {
+      font-size: 1rem;
+      background-color:#4dbfbb;
+      color: #000000;
+      padding: 0.5rem;
+    }
   
-  .leave {
-    padding: 0.375rem 0.75rem; /* Smaller padding: 6px 12px */
-    font-size: 0.875rem; /* Smaller font size: 14px */
-    background-color: transparent; /* Transparent background */
-    color: #ef4444; /* Button text color */
-    border: 2px solid #ef4444; /* Border color */
-    border-radius: 0.375rem; /* Medium rounded corners */
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Smaller shadow */
-    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
-  }
-  
-  .leave:hover {
-    background-color: #ef4444; /* Background color on hover */
-    color: #ffffff; /* Text color on hover */
-  }
-  
-  .active {
-    font-size: 1rem; /* Smaller font size: 10px */
-    background-color:#4dbfbb; /* Light orange background color */
-    color: #000000; /* Text color */
-    padding: 0.5rem; /* Add padding around the text */
-  }
-
-  .member {
-    font-size: 1rem; /* Smaller font size: 14px */
-    color: rgba(185, 17, 5, 0.973); /* Red text color */
-    padding: o.5rem; /* Padding around the text */
-    text-align: center; 
-  }
-  
+    .member {
+      font-size: 1rem;
+      color: rgba(185, 17, 5, 0.973);
+      padding: o.5rem;
+      text-align: center; 
+    }
   
