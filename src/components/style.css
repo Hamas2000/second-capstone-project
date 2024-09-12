@@ -1,5 +1,13 @@
+.text-smaller-weight {
+  font-weight: 100;
+  font-size: 15px;
+}
+
 .table {
-  border: solid 3px grey;
+  border: solid 3px #c86c04;
+  display: block;
+  margin: auto;
+  background-color: #ebeaea;
 }
 
 .join {
@@ -47,5 +55,20 @@
     padding: o.5rem;
     text-align: center; 
   }
+
+  .mission-card,
+.rocket-card {
+  background-color: rgb(229, 231, 235);
+  color: black;
+  padding: 1.25rem;
+  border: 1px solid #d1d5db;
+  box-shadow: 0 4px 6px rgba(229, 231, 235, 0.5), 0 1px 3px rgba(229, 231, 235, 0.1), inset 0 0 10px rgba(229, 231, 235, 0.5);
+}
+
+.profile-card {
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
   
   

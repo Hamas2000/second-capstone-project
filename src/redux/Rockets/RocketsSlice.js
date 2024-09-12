@@ -44,7 +44,7 @@ const rocketsSlice = createSlice({
           image: rocket.flickr_images[0],
           name: rocket.name,
           description: rocket.description,
-          reserved: false, // Initialize reserved state
+          reserved: false,
         }));
       })
       .addCase(getDataFromServer.rejected, (state, action) => {
@@ -56,6 +56,3 @@ const rocketsSlice = createSlice({
 
 export default rocketsSlice.reducer;
 export const { reserveRocket } = rocketsSlice.actions;
-
-
-
