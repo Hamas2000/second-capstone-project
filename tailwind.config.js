@@ -6,14 +6,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'custom-bg': 'rgb(229 231 235 / var(--tw-bg-opacity))', // Custom background color
-        'custom-text': 'black', // Custom text color
+        'custom-bg': 'rgb(229 231 235 / var(--tw-bg-opacity))',
+        'custom-text': 'black',
       },
       fontSize: {
-        '20px': '20px', // Custom font size
+        '20px': '20px',
       },
       textAlign: {
-        'justify': 'justify', // Justify text alignment
+        'justify': 'justify',
       }
     },
   },
