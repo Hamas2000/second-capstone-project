@@ -9,11 +9,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
->>>>>>> developments
 }
 
 .App-logo {
-  height: 100vmin; /* Increased height for the logo */
+  height: 100vmin; 
   pointer-events: none;
 }
 
