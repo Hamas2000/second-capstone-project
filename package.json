@@ -14,13 +14,7 @@
     "react-router-dom": "^6.26.1",
     "react-scripts": "^5.0.1",
     "react-router-dom": "^6.26.2",
-<<<<<<< HEAD
-    "react-router-dom": "^6.26.2",
- 
-=======
-    "react-scripts": "^5.0.1",
-    "redux": "^5.0.1",
->>>>>>> e5c12ac64ff6cedd0b3884d3caff04f9c7cd7c67
+
     "redux-logger": "^3.0.6",
     "web-vitals": "^2.1.4"
   },
