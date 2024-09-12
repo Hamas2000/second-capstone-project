@@ -53,4 +53,8 @@ RocketsItem.propTypes = {
   reserved: PropTypes.bool.isRequired,
 };
 
+<<<<<<< traveler
 export default RocketsItem;
+=======
+export default RocketsItem;
+>>>>>>> developments

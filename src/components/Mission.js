@@ -50,4 +50,8 @@ const Mission = ({ mission, onJoin, onLeave }) => {
   );
 };
 
+<<<<<<< traveler
 export default Mission;
+=======
+export default Mission;
+>>>>>>> developments
