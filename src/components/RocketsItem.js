@@ -45,9 +45,5 @@ RocketsItem.propTypes = {
   reserved: PropTypes.bool.isRequired,
 };
 
-<<<<<<< HEAD
-
-=======
->>>>>>> e5c12ac64ff6cedd0b3884d3caff04f9c7cd7c67
 export default RocketsItem;
 
