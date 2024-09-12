@@ -19,7 +19,7 @@ const Mission = ({ mission, onJoin, onLeave }) => {
         {mission.mission_name}
       </td>
 
-      <td className="py-4 px-6 text-justify text-20px text-custom-text border-r border-gray-300">
+      <td className="py-4 px-6 text-justify text-10px text-custom-text text-smaller-weight border-r border-gray-300">
         {mission.description}
       </td>
 
@@ -51,3 +51,7 @@ const Mission = ({ mission, onJoin, onLeave }) => {
 };
 
 export default Mission;
+<<<<<<< HEAD
+=======
+
+>>>>>>> mission
