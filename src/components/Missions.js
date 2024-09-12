@@ -1,46 +1,48 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchMissions } from '../redux/missions/missionSlice';
+import { setMissions, joinMission, leaveMission } from '../redux/missions/missionSlice';
 import Mission from './Mission';
 
 const Missions = () => {
   const dispatch = useDispatch();
   const missions = useSelector((state) => state.missions.missions);
-  const status = useSelector((state) => state.missions.status);
 
   useEffect(() => {
-    if (status === 'idle') {
-      dispatch(fetchMissions());
-    }
-  }, [status, dispatch]);
+    const fetchMissions = async () => {
+      const response = await fetch('https://api.spacexdata.com/v3/missions');
+      const data = await response.json();
+      dispatch(setMissions(data.map((mission) => ({ ...mission, reserved: false }))));
+    };
 
-  if (status === 'loading') {
-    return <div className="text-center">Loading...</div>;
-  }
+    fetchMissions();
+  }, [dispatch]);
 
-  if (status === 'failed') {
-    return <div className="text-center text-red-500">Error loading missions.</div>;
-  }
+  const handleJoin = (id) => {
+    dispatch(joinMission(id));
+  };
+
+  const handleLeave = (id) => {
+    dispatch(leaveMission(id));
+  };
 
   return (
-    <div className="overflow-x-auto">
-      <table className="min-w-full border-collapse">
-        <thead className="bg-gray-200">
+    <div className="p-8">
+      <h1 className="text-3xl font-bold mb-6" id="mission">Missions</h1>
+      <table className="min-w-full bg-white border border-gray-300 rounded-md shadow" >
+        <thead className="bg-gray-100 border-b border-gray-300">
           <tr>
-            <th className="border px-2 sm:px-4 py-2 text-xs sm:text-sm text-left">Mission</th>
-            <th className="border px-2 sm:px-4 py-2 text-xs sm:text-sm text-left">Description</th>
-            <th className="border px-2 sm:px-4 py-2 text-xs sm:text-sm text-left">Status</th>
-            <th className="border px-2 sm:px-4 py-2 text-xs sm:text-sm text-left">Actions</th>
+            <th className="py-4 px-6 text-left font-bold text-gray-800 border-r border-gray-300">Mission</th>
+            <th className="py-4 px-6 text-left font-bold text-gray-800 border-r border-gray-300" class="mission-description">Description</th>
+            <th className="py-4 px-6 text-left font-bold text-gray-800">Status</th>
           </tr>
         </thead>
         <tbody>
           {missions.map((mission) => (
             <Mission
-              key={mission.mission_id} // Use unique mission ID as key
-              id={mission.mission_id}
-              mission={mission.mission_name}
-              description={mission.description}
-              reserved={mission.reserved}
+              key={mission.mission_id}
+              mission={mission}
+              onJoin={() => handleJoin(mission.mission_id)}
+              onLeave={() => handleLeave(mission.mission_id)}
             />
           ))}
         </tbody>
