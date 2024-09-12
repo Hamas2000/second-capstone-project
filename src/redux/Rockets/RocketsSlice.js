@@ -58,3 +58,7 @@ export default rocketsSlice.reducer;
 export const { reserveRocket } = rocketsSlice.actions;
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> e5c12ac64ff6cedd0b3884d3caff04f9c7cd7c67

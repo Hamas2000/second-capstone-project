@@ -1,6 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+<<<<<<< HEAD
 // Initial state
+=======
+>>>>>>> e5c12ac64ff6cedd0b3884d3caff04f9c7cd7c67
 const initialState = {
   missions: [],
 };
@@ -31,4 +34,10 @@ const missionSlice = createSlice({
 });
 
 export const { setMissions, joinMission, leaveMission } = missionSlice.actions;
+<<<<<<< HEAD
 export default missionSlice.reducer;
+=======
+export default missionSlice.reducer;
+
+
+>>>>>>> e5c12ac64ff6cedd0b3884d3caff04f9c7cd7c67
