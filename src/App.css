@@ -7,7 +7,7 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 100vmin; /* Increased height for the logo */
   pointer-events: none;
 }
 
@@ -17,19 +17,24 @@
   }
 }
 
-.App-header {
-  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
-  min-height: 100vh;
+ .App-header {
+  background-color: #fff;
+  min-height: 300px; 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
+  box-shadow: 0 4px 20px rgba(128, 128, 128, 0.5); 
+} 
 
 .App-link {
-  color: hwb(193 2% 52%);
+  color: black; /* Set link color to black */
+}
+
+.App-link:hover {
+  color: rgba(255, 140, 0, 1); /* Set hover color to dark orange */
 }
 
 @keyframes App-logo-spin {

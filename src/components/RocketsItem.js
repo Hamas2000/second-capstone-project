@@ -1,3 +1,4 @@
+
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { reserveRocket } from '../redux/Rockets/RocketsSlice';
@@ -53,4 +54,3 @@ RocketsItem.propTypes = {
 };
 
 export default RocketsItem;
-

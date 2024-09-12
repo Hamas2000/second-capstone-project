@@ -6,13 +6,12 @@ const MyProfile = () => {
   const filterRockets = rocketData.filter((rocket) => rocket.reserved);
   const missionData = useSelector((state) => state.missions.missions);
   const filterMissions = missionData.filter((mission) => mission.reserved);
-
-  const solidShadow = '0px 4px 8px rgba(77, 191, 187, 0.7)'; // Solid shadow with the color #4dbfbb
+  const solidShadow = '0px 4px 8px rgba(77, 191, 187, 0.7)'; 
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-[100px] profile-grid">
       <div
-        className="mission-card bg-[rgb(229,231,235)] text-black p-5 border border-gray-400"
+        className="mission-card bg-gray-200 text-black p-5 border border-gray-400"
         style={{ boxShadow: solidShadow }}
       >
         <h2 className="text-xl font-bold mb-4">My Missions</h2>
@@ -27,8 +26,8 @@ const MyProfile = () => {
         </ul>
       </div>
       <div
-        className="rocket-card bg-[rgb(229,231,235)] text-black p-5 border border-gray-400"
-        style={{ boxShadow: solidShadow }}
+        className="rocket-card bg-gray-200 text-black p-5 border border-gray-400"
+        style={{ boxShadow: solidShadow }} // Corrected placement of style
       >
         <h2 className="text-xl font-bold mb-4">My Rockets</h2>
         <ul className="profile-card border border-gray-400 rounded-lg p-4" style={{ boxShadow: solidShadow }}>
