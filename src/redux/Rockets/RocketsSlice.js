@@ -44,11 +44,7 @@ const rocketsSlice = createSlice({
           image: rocket.flickr_images[0],
           name: rocket.name,
           description: rocket.description,
-<<<<<<< traveler
-          reserved: false, // Initialize reserved state
-=======
           reserved: false,
->>>>>>> developments
         }));
       })
       .addCase(getDataFromServer.rejected, (state, action) => {
@@ -59,9 +55,4 @@ const rocketsSlice = createSlice({
 });
 
 export default rocketsSlice.reducer;
-<<<<<<< traveler
 export const { reserveRocket } = rocketsSlice.actions;
-=======
-export const { reserveRocket } = rocketsSlice.actions;
-
->>>>>>> developments

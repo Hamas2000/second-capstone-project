@@ -17,11 +17,8 @@ function App() {
             <Route path="/rockets" element={<Rockets />} />
             <Route path="/missions" element={<Missions />} />
             <Route path="/profile" element={<MyProfile />} />
-<<<<<<< traveler
-            <Route path="/" element={<Rockets />} /> {/* Set default route */}
-=======
-            <Route path="/" element={<Rockets />} /> {}
->>>>>>> developments
+            {/* Set default route */}
+            <Route path="/" element={<Rockets />} />
           </Routes>
         </header>
       </div>
@@ -30,7 +27,3 @@ function App() {
 }
 
 export default App;
-<<<<<<< traveler
-
-=======
->>>>>>> developments

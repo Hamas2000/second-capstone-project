@@ -7,11 +7,7 @@
 }
 
 .App-logo {
-<<<<<<< traveler
   height: 100vmin; /* Increased height for the logo */
-=======
-  height: 100vmin;
->>>>>>> developments
   pointer-events: none;
 }
 
@@ -21,11 +17,7 @@
   }
 }
 
-<<<<<<< traveler
-/ .App-header {
-=======
-.App-header {
->>>>>>> developments
+ .App-header {
   background-color: #fff;
   min-height: 300px; 
   display: flex;
@@ -38,19 +30,11 @@
 } 
 
 .App-link {
-<<<<<<< traveler
   color: black; /* Set link color to black */
 }
 
 .App-link:hover {
   color: rgba(255, 140, 0, 1); /* Set hover color to dark orange */
-=======
-  color: black;
-}
-
-.App-link:hover {
-  color: rgba(255, 140, 0, 1);
->>>>>>> developments
 }
 
 @keyframes App-logo-spin {

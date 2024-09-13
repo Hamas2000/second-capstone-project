@@ -56,11 +56,7 @@
     text-align: center; 
   }
 
-<<<<<<< traveler
   .mission-card,
-=======
-.mission-card,
->>>>>>> developments
 .rocket-card {
   background-color: rgb(229, 231, 235);
   color: black;
@@ -73,16 +69,4 @@
   border: 1px solid #d1d5db;
   border-radius: 0.5rem;
   padding: 1rem;
-<<<<<<< traveler
 }
-=======
-}
-
-.member {
-  font-size: 1rem;
-  color: rgba(185, 17, 5, 0.973);
-  padding: o.5rem;
-  text-align: center; 
-}
-  
->>>>>>> developments
