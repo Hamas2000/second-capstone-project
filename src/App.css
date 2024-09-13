@@ -17,7 +17,7 @@
   }
 }
 
-/ .App-header {
+.App-header {
   background-color: #fff;
   min-height: 300px; 
   display: flex;
@@ -27,7 +27,7 @@
   font-size: calc(10px + 2vmin);
   color: white;
   box-shadow: 0 4px 20px rgba(128, 128, 128, 0.5); 
-} 
+}
 
 .App-link {
   color: black; /* Set link color to black */
