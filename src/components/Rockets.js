@@ -18,7 +18,8 @@ const Rockets = () => {
         {loading && <p className="text-center text-lg">Loading...</p>}
         {error && (
           <p className="text-red-500 text-center">
-            Error: {error}
+            Error: 
+            {error}
           </p>
         )}
         {!loading && !error && rocketData.map((rocket) => (

@@ -27,7 +27,7 @@ const MyProfile = () => {
       </div>
       <div
         className="rocket-card bg-gray-200 text-black p-5 border border-gray-400"
-        style={{ boxShadow: solidShadow }} // Corrected placement of style
+        style={{ boxShadow: solidShadow }}
       >
         <h2 className="text-xl font-bold mb-4">My Rockets</h2>
         <ul className="profile-card border border-gray-400 rounded-lg p-4" style={{ boxShadow: solidShadow }}>

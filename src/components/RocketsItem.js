@@ -1,4 +1,3 @@
-
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { reserveRocket } from '../redux/Rockets/RocketsSlice';
@@ -31,7 +30,7 @@ const RocketsItem = ({
           )}
           <span className="ml-2">{description}</span>
         </p>
-        <div className="flex justify-center"> {/* Center the button */}
+        <div className="flex justify-center">
           <button
             onClick={() => reserveRockets(id)}
             className={`w-full md:w-32 px-2 py-1 rounded-lg text-white ${reserved ? 'bg-red-700 hover:bg-red-800' : 'bg-[#4dbfbb] hover:bg-orange-600'} text-xs`}
@@ -53,8 +52,4 @@ RocketsItem.propTypes = {
   reserved: PropTypes.bool.isRequired,
 };
 
-<<<<<<< traveler
 export default RocketsItem;
-=======
-export default RocketsItem;
->>>>>>> developments

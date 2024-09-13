@@ -31,7 +31,7 @@ const rocketsSlice = createSlice({
         rocket.reserved = !rocket.reserved;
       }
     },
-  }
+  }, // Added missing comma here
   extraReducers: (builder) => {
     builder
       .addCase(getDataFromServer.pending, (state) => {
