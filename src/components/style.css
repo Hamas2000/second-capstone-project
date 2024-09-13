@@ -62,9 +62,7 @@
   color: black;
   padding: 1.25rem;
   border: 1px solid #d1d5db;
-  box-shadow: 0 4px 6px rgba(229, 231, 235, 0.5), 
-              0 1px 3px rgba(229, 231, 235, 0.1), 
-              inset 0 0 10px rgba(204, 206, 209, 0.5);
+  box-shadow: 0 4px 6px rgba(229, 231, 235, 0.5)
 }
 
 .profile-card {
