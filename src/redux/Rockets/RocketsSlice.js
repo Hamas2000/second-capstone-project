@@ -12,7 +12,7 @@ export const getDataFromServer = createAsyncThunk(
     } catch (error) {
       return Promise.reject(error.message);
     }
-  }
+  },
 );
 
 const initialState = {
@@ -31,7 +31,7 @@ const rocketsSlice = createSlice({
         rocket.reserved = !rocket.reserved;
       }
     },
-  },
+  }
   extraReducers: (builder) => {
     builder
       .addCase(getDataFromServer.pending, (state) => {

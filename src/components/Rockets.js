@@ -12,10 +12,15 @@ const Rockets = () => {
   }, [dispatch]);
 
   return (
-    <div className="bg-gray-200 min-h-screen p-6"> {/* Set the page background color */}
+    <div className="bg-gray-200 min-h-screen p-6">
+      {/* Set the page background color */}
       <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
         {loading && <p className="text-center text-lg">Loading...</p>}
-        {error && <p className="text-red-500 text-center">Error: {error}</p>}
+        {error && (
+          <p className="text-red-500 text-center">
+            Error: {error}
+          </p>
+        )}
         {!loading && !error && rocketData.map((rocket) => (
           <RocketsItem
             key={rocket.id}
