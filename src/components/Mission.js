@@ -1,5 +1,5 @@
-import React, { useState } from 'react'; 
-import PropTypes from 'prop-types'; // Import PropTypes
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const Mission = ({ mission, onJoin, onLeave }) => {
   const [isActive, setIsActive] = useState(mission.reserved);
