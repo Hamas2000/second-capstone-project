@@ -1,11 +1,10 @@
-// Import statements
+
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { joinMission, leaveMission } from '../redux/missions/missionsSlice.js'; 
+import { joinMission, leaveMission } from '../redux/Missions/missionsSlice.js';
 import { reserveRocket, unreserveRocket } from '../redux/Rockets/RocketsSlice.js';
 import Mission from './Mission';
 
-// Your Rockets component code
 const Rockets = () => {
   const dispatch = useDispatch();
   const rocketData = useSelector((state) => state.rockets.rocketData);
