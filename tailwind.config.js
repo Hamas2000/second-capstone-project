@@ -1,4 +1,3 @@
-{import('tailwindcss').Config}
 module.exports = {
   content: [
     './src/**/*.{js,jsx,ts,tsx}',
@@ -13,9 +12,9 @@ module.exports = {
         '20px': '20px',
       },
       textAlign: {
-        'justify': 'justify',
-      }
+        justify: 'justify',
+      },
     },
   },
-  plugins: [], 
+  plugins: [],
 };
