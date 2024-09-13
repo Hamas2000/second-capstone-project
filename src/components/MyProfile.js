@@ -6,7 +6,7 @@ const MyProfile = () => {
   const filterRockets = rocketData.filter((rocket) => rocket.reserved);
   const missionData = useSelector((state) => state.missions.missions);
   const filterMissions = missionData.filter((mission) => mission.reserved);
-  const solidShadow = '0px 4px 8px rgba(77, 191, 187, 0.7)'; 
+  const solidShadow = '0px 4px 8px rgba(77, 191, 187, 0.7)';
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-[100px] profile-grid">

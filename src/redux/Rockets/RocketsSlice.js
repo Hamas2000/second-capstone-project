@@ -1,24 +1,8 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-const baseUrl = 'https://api.spacexdata.com/v4/rockets';
-
-export const getDataFromServer = createAsyncThunk(
-  'rockets/getDataFromServer',
-  async () => {
-    try {
-      const response = await fetch(baseUrl);
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      return Promise.reject(error.message);
-    }
-  },
-);
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   rocketData: [],
-  loading: false,
-  error: '',
 };
 
 const rocketsSlice = createSlice({
@@ -26,33 +10,23 @@ const rocketsSlice = createSlice({
   initialState,
   reducers: {
     reserveRocket: (state, action) => {
-      const rocket = state.rocketData.find((rocket) => rocket.id === action.payload);
+      const rocketId = action.payload;
+      const rocket = state.rocketData.find((rocket) => rocket.id === rocketId);
       if (rocket) {
-        rocket.reserved = !rocket.reserved;
+        rocket.reserved = true;
       }
     },
-  }, // Added missing comma here
-  extraReducers: (builder) => {
-    builder
-      .addCase(getDataFromServer.pending, (state) => {
-        state.loading = true;
-      })
-      .addCase(getDataFromServer.fulfilled, (state, action) => {
-        state.loading = false;
-        state.rocketData = action.payload.map((rocket) => ({
-          id: rocket.id,
-          image: rocket.flickr_images[0],
-          name: rocket.name,
-          description: rocket.description,
-          reserved: false,
-        }));
-      })
-      .addCase(getDataFromServer.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
-      });
+    unreserveRocket: (state, action) => {
+      const rocketId = action.payload;
+      const rocket = state.rocketData.find((rocket) => rocket.id === rocketId);
+      if (rocket) {
+        rocket.reserved = false;
+      }
+    },
+    // Other reducers...
   },
 });
 
+export const { reserveRocket, unreserveRocket } = rocketsSlice.actions;
+
 export default rocketsSlice.reducer;
-export const { reserveRocket } = rocketsSlice.actions;

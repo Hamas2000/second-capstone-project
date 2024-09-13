@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const RocketsItem = ({
-  id,
   name,
   image,
   description,
@@ -22,7 +21,6 @@ const RocketsItem = ({
 );
 
 RocketsItem.propTypes = {
-  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
