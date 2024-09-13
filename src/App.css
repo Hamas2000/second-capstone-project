@@ -17,30 +17,31 @@
   }
 }
 
- .App-header {
+.App-header {
   background-color: #fff;
-  min-height: 300px; 
+  min-height: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-  box-shadow: 0 4px 20px rgba(128, 128, 128, 0.5); 
+  box-shadow: 0 4px 20px rgba(128, 128, 128, 0.5);
 }
 
 .App-link {
-  color: black; /* Set link color to black */
+  color: black;
 }
 
 .App-link:hover {
-  color: rgba(255, 140, 0, 1); /* Set hover color to dark orange */
+  color: rgba(255, 140, 0, 1);
 }
 
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
+  
   to {
     transform: rotate(360deg);
   }
