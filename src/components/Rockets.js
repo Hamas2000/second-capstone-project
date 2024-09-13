@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { joinMission, leaveMission } from '../redux/missions/missionsSlice'; // No .js extension
-import { reserveRocket, unreserveRocket } from '../redux/Rockets/RocketsSlice'; // No .js extension
+import { joinMission, leaveMission } from '../redux/missions/missionsSlice.js'; // Added .js extension
+import { reserveRocket, unreserveRocket } from '../redux/Rockets/RocketsSlice.js'; // Added .js extension
 import Mission from './Mission';
 
 const Rockets = () => {
