@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const RocketsItem = ({ 
-  id, 
-  name, 
-  image, 
-  description, 
-  reserved 
+const RocketsItem = ({
+  id,
+  name,
+  image,
+  description,
+  reserved,
 }) => (
   <li className="rocket-item border border-gray-300 p-4 rounded-md">
     <img src={image} alt={name} className="w-full h-40 object-cover mb-2" />
