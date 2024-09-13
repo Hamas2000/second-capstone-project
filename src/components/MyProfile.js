@@ -18,7 +18,9 @@ const MyProfile = () => {
         <ul className="profile-card border border-gray-400 rounded-lg p-4" style={{ boxShadow: solidShadow }}>
           {filterMissions.length > 0 ? (
             filterMissions.map((mission) => (
-              <li key={mission.mission_id} className="border-b border-gray-300 py-2">{mission.mission_name}</li>
+              <li key={mission.mission_id} className="border-b border-gray-300 py-2">
+                {mission.mission_name}
+              </li>
             ))
           ) : (
             <li>No reserved missions</li>
@@ -33,7 +35,9 @@ const MyProfile = () => {
         <ul className="profile-card border border-gray-400 rounded-lg p-4" style={{ boxShadow: solidShadow }}>
           {filterRockets.length > 0 ? (
             filterRockets.map((rocket) => (
-              <li key={rocket.id} className="border-b border-gray-300 py-2">{rocket.name}</li>
+              <li key={rocket.id} className="border-b border-gray-300 py-2">
+                {rocket.name}
+              </li>
             ))
           ) : (
             <li>No reserved rockets</li>
