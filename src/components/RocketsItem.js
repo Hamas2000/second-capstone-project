@@ -21,7 +21,8 @@ const RocketsItem = ({
         />
       </div>
       <div className="flex-1 ml-0 md:ml-4 flex flex-col">
-        <h2 className="text-lg font-semibold text-gray-800 mb-2">{name}</h2> {/* Rocket Name */}
+        <h2 className="text-lg font-semibold text-gray-800 mb-2">{name}</h2>
+        {/* Rocket Name */}
         <p className="text-gray-700 mb-2 text-sm">
           {reserved && (
             <span className="bg-green-100 text-green-700 px-2 py-1 rounded-md font-semibold">

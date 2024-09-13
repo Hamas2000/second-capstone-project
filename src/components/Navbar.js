@@ -20,7 +20,7 @@ const Navbar = () => (
             <li key={path} className="relative flex items-center group">
               <NavLink
                 to={path}
-                className={({ isActive }) => `inline-block ${isActive ? 'font-semibold' : 'text-gray-700'} hover:text-orange-600 hover:underline`} 
+                className={({ isActive }) => `inline-block ${isActive ? 'font-semibold' : 'text-gray-700'} hover:text-orange-600 hover:underline`}
               >
                 {path === '/' ? 'Rockets' : path.charAt(1).toUpperCase() + path.slice(2)}
               </NavLink>
