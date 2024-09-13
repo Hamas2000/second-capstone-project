@@ -1,8 +1,7 @@
-
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { joinMission, leaveMission } from '../redux/missions/missionsSlice';
-import { reserveRocket, unreserveRocket } from '../redux/Rockets/RocketsSlice.js';
+import { joinMission, leaveMission } from '../redux/missions/missionsSlice.js'; // Added .js extension
+import { reserveRocket, unreserveRocket } from '../redux/Rockets/RocketsSlice.js'; // Added .js extension
 import Mission from './Mission';
 
 const Rockets = () => {
@@ -37,7 +36,11 @@ const Rockets = () => {
               <button
                 className={`rocket-button ${rocket.reserved ? 'unreserve' : 'reserve'}`}
                 onClick={() => {
-                  rocket.reserved ? handleUnreserve(rocket.id) : handleReserve(rocket.id);
+                  if (rocket.reserved) {
+                    handleUnreserve(rocket.id); // Fixed no-unused-expressions error
+                  } else {
+                    handleReserve(rocket.id); // Fixed no-unused-expressions error
+                  }
                 }}
                 type="button"
               >
