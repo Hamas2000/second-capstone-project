@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { joinMission, leaveMission } from '../redux/missions/missionsSlice.js'; // Added .js extension
-import { reserveRocket, unreserveRocket } from '../redux/Rockets/RocketsSlice.js'; // Added .js extension
+import { joinMission, leaveMission } from '../redux/Missions/missionsSlice.js';
+import { reserveRocket, unreserveRocket } from '../redux/Rockets/RocketsSlice.js';
 import Mission from './Mission';
 
 const Rockets = () => {
@@ -36,7 +36,7 @@ const Rockets = () => {
               <button
                 className={`rocket-button ${rocket.reserved ? 'unreserve' : 'reserve'}`}
                 onClick={() => {
-                  // Call the correct function based on the rocket's reservation status
+                  
                   if (rocket.reserved) {
                     handleUnreserve(rocket.id);
                   } else {
