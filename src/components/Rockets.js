@@ -1,9 +1,11 @@
+// Import statements
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { joinMission, leaveMission } from '../redux/Missions/missionsSlice.js';
+import { joinMission, leaveMission } from '../redux/missions/missionsSlice.js'; 
 import { reserveRocket, unreserveRocket } from '../redux/Rockets/RocketsSlice.js';
 import Mission from './Mission';
 
+// Your Rockets component code
 const Rockets = () => {
   const dispatch = useDispatch();
   const rocketData = useSelector((state) => state.rockets.rocketData);
@@ -36,12 +38,7 @@ const Rockets = () => {
               <button
                 className={`rocket-button ${rocket.reserved ? 'unreserve' : 'reserve'}`}
                 onClick={() => {
-                  
-                  if (rocket.reserved) {
-                    handleUnreserve(rocket.id);
-                  } else {
-                    handleReserve(rocket.id);
-                  }
+                  rocket.reserved ? handleUnreserve(rocket.id) : handleReserve(rocket.id);
                 }}
                 type="button"
               >
