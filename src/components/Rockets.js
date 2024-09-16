@@ -1,75 +1,32 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { joinMission, leaveMission } from '../redux/missions/missionsSlice.js'; // Added .js extension
-import { reserveRocket, unreserveRocket } from '../redux/Rockets/RocketsSlice.js'; // Added .js extension
-import Mission from './Mission';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import RocketsItem from './RocketsItem';
+import { getDataFromServer } from '../redux/Rockets/RocketsSlice';
 
 const Rockets = () => {
   const dispatch = useDispatch();
-  const rocketData = useSelector((state) => state.rockets.rocketData);
-  const missionData = useSelector((state) => state.missions.missions);
+  const { rocketData, loading, error } = useSelector((state) => state.rockets);
 
-  const handleJoin = (missionId) => {
-    dispatch(joinMission(missionId));
-  };
-
-  const handleLeave = (missionId) => {
-    dispatch(leaveMission(missionId));
-  };
-
-  const handleReserve = (rocketId) => {
-    dispatch(reserveRocket(rocketId));
-  };
-
-  const handleUnreserve = (rocketId) => {
-    dispatch(unreserveRocket(rocketId));
-  };
+  useEffect(() => {
+    dispatch(getDataFromServer());
+  }, [dispatch]);
 
   return (
-    <div className="rocket-container">
-      <h2 className="text-2xl font-bold mb-4">Rockets</h2>
-      <ul className="rocket-list">
-        {rocketData.map((rocket) => (
-          <li key={rocket.id} className="rocket-item">
-            <div className="rocket-details">
-              <h3 className="rocket-name">{rocket.name}</h3>
-              <button
-                className={`rocket-button ${rocket.reserved ? 'unreserve' : 'reserve'}`}
-                onClick={() => {
-                  if (rocket.reserved) {
-                    handleUnreserve(rocket.id); // Fixed no-unused-expressions error
-                  } else {
-                    handleReserve(rocket.id); // Fixed no-unused-expressions error
-                  }
-                }}
-                type="button"
-              >
-                {rocket.reserved ? 'Cancel Reservation' : 'Reserve Rocket'}
-              </button>
-            </div>
-          </li>
+    <div className="bg-gray-200 min-h-screen p-6"> {/* Set the page background color */}
+      <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+        {loading && <p className="text-center text-lg">Loading...</p>}
+        {error && <p className="text-red-500 text-center">Error: {error}</p>}
+        {!loading && !error && rocketData.map((rocket) => (
+          <RocketsItem
+            key={rocket.id}
+            id={rocket.id}
+            name={rocket.name}
+            image={rocket.image}
+            description={rocket.description}
+            reserved={rocket.reserved}
+          />
         ))}
       </ul>
-      <h2 className="text-2xl font-bold mb-4 mt-10">Missions</h2>
-      <table className="mission-table">
-        <thead>
-          <tr>
-            <th className="py-2">Mission Name</th>
-            <th className="py-2">Description</th>
-            <th className="py-2">Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          {missionData.map((mission) => (
-            <Mission
-              key={mission.mission_id}
-              mission={mission}
-              onJoin={() => handleJoin(mission.mission_id)}
-              onLeave={() => handleLeave(mission.mission_id)}
-            />
-          ))}
-        </tbody>
-      </table>
     </div>
   );
 };
