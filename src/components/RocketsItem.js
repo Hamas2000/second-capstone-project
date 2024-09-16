@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { reserveRocket } from '../redux/Rockets/RocketsSlice';
 
-const RocketsItem = ({
+function RocketsItem({
   id, name, image, description, reserved,
-}) => {
+}) {
   const dispatch = useDispatch();
   const reserveRockets = (buttonId) => {
     dispatch(reserveRocket(buttonId));
@@ -21,7 +21,7 @@ const RocketsItem = ({
         />
       </div>
       <div className="flex-1 ml-0 md:ml-4 flex flex-col">
-        <h2 className="text-lg font-semibold text-gray-800 mb-2">{name}</h2> {/* Rocket Name */}
+        <h2 className="text-lg font-semibold text-gray-800 mb-2">{name}</h2>
         <p className="text-gray-700 mb-2 text-sm">
           {reserved && (
             <span className="bg-green-100 text-green-700 px-2 py-1 rounded-md font-semibold">
@@ -30,7 +30,7 @@ const RocketsItem = ({
           )}
           <span className="ml-2">{description}</span>
         </p>
-        <div className="flex justify-center"> {/* Center the button */}
+        <div className="flex justify-center">
           <button
             onClick={() => reserveRockets(id)}
             className={`w-full md:w-32 px-2 py-1 rounded-lg text-white ${reserved ? 'bg-red-700 hover:bg-red-800' : 'bg-[#4dbfbb] hover:bg-orange-600'} text-xs`}
@@ -42,7 +42,7 @@ const RocketsItem = ({
       </div>
     </li>
   );
-};
+}
 
 RocketsItem.propTypes = {
   id: PropTypes.string.isRequired,
