@@ -14,10 +14,10 @@ function RocketsItem({
     <li className="flex flex-col md:flex-row bg-white shadow-lg rounded-lg p-4 items-start transition-shadow duration-200 hover:shadow-2xl" style={{ boxShadow: '0 4px 15px rgba(77, 191, 187, 0.5)' }}>
       <div className="w-full md:w-2/5 flex-shrink-0 mb-4 md:mb-0 flex justify-center">
         <img
-          className="h-auto rounded-lg object-cover" 
+          className="h-auto rounded-lg object-cover"
           alt={name}
           src={image}
-          style={{ height: '150px', width: 'auto' }} 
+          style={{ height: '150px', width: 'auto' }}
         />
       </div>
       <div className="flex-1 ml-0 md:ml-4 flex flex-col">

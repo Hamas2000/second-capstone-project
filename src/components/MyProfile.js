@@ -1,20 +1,18 @@
-// src/components/MyProfile.js
-
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-const MyProfile = () => {
+function MyProfile() {
   const { rocketData } = useSelector((state) => state.rockets);
   const filterRockets = rocketData.filter((rocket) => rocket.reserved);
   const missionData = useSelector((state) => state.missions.missions);
   const filterMissions = missionData.filter((mission) => mission.reserved);
 
-  const solidShadow = '0px 4px 8px rgba(77, 191, 187, 0.7)'; // Solid shadow with the color #4dbfbb
+  const solidShadow = '0px 4px 8px rgba(77, 191, 187, 0.7)';
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-[100px] profile-grid">
       <div
-        className="mission-card bg-gray-200 text-black p-5 border border-gray-400" // Changed to bg-gray-200
+        className="mission-card bg-gray-200 text-black p-5 border border-gray-400"
         style={{ boxShadow: solidShadow }}
       >
         <h2 className="text-xl font-bold mb-4">My Missions</h2>
@@ -29,7 +27,7 @@ const MyProfile = () => {
         </ul>
       </div>
       <div
-        className="rocket-card bg-gray-200 text-black p-5 border border-gray-400" // Changed to bg-gray-200
+        className="rocket-card bg-gray-200 text-black p-5 border border-gray-400"
         style={{ boxShadow: solidShadow }}
       >
         <h2 className="text-xl font-bold mb-4">My Rockets</h2>
@@ -45,6 +43,6 @@ const MyProfile = () => {
       </div>
     </div>
   );
-};
+}
 
 export default MyProfile;

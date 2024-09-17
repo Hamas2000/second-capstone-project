@@ -12,7 +12,7 @@ export const getDataFromServer = createAsyncThunk(
     } catch (error) {
       return Promise.reject(error.message);
     }
-  }
+  },
 );
 
 const initialState = {

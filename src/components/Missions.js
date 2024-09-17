@@ -13,8 +13,8 @@ function Missions() {
       const data = await response.json();
       dispatch(
         setMissions(
-          data.map((mission) => ({ ...mission, reserved: false }))
-        )
+          data.map((mission) => ({ ...mission, reserved: false })),
+        ),
       );
     };
 
@@ -56,4 +56,3 @@ function Missions() {
 }
 
 export default Missions;
-
