@@ -9,10 +9,13 @@ A React and Redux-based web application that allows users to book rockets, join 
 5. Responsive Design: The app is fully responsive, providing a great user experience on both mobile and desktop devices.
 
 ## Demo 📸
-See the project in action:
+See the project in action: 
+<img width="955" alt="Screenshot 2024-09-19 013805" src="https://github.com/user-attachments/assets/5c491605-7b77-4a5e-b419-0e96701523df">
+<img width="950" alt="Screenshot 2024-09-19 014645" src="https://github.com/user-attachments/assets/6f0e41eb-6a59-48a3-92c6-94a135784bdd">
+<img width="958" alt="Screenshot 2024-09-12 095434" src="https://github.com/user-attachments/assets/5fb051ec-9ffb-4b51-9aff-08f2908abd68">
 
 ## Live Version 🪟
-Check out the live site here: [Live Portfolio](https:https://hamas2000.github.io/JS-Capstone-Project-Personal-Portfolio-/)
+Check out the live site here: (https://developments--enchanting-cat-ec893b.netlify.app/)
 
 ## Tech Stack 🛠️
 - React: A JavaScript library for building user interfaces.
